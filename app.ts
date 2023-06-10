@@ -156,3 +156,25 @@ const book1: Book = {
   price: 1,
   size: 1,
 };
+
+// ---------------------
+
+// you can use any on type or merge
+//  but in typr merging is not posible
+// types are used for primitives
+
+// ----------------
+
+//  Unions
+
+type ID1 = number | string;
+
+const printId = (id: ID1) => {
+  // Narrowing
+  if (typeof id === "string") {
+    console.log(id.toUpperCase());
+  } else {
+    console.log(id);
+  }
+};
+printId("1");
