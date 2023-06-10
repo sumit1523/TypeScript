@@ -140,3 +140,19 @@ const book: AudioBook = {
   format: "pdf",
   duration: 5,
 };
+
+// Mergeing
+
+interface Book {
+  name: string;
+  price: number;
+}
+interface Book {
+  size: number;
+}
+
+const book1: Book = {
+  name: "Atomiv ahbit",
+  price: 1,
+  size: 1,
+};
