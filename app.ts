@@ -75,3 +75,68 @@ type IDString = number | string; //alias
 
 const userId: ID = 111;
 const userIdString: IDString = 111;
+
+// ----------------------
+
+//  Interface
+interface Transaction {
+  payerAccountNumber: number;
+  payeeAccountNumber: number;
+}
+interface BankAccount {
+  accountNumber: number;
+  accountHolder: string;
+  balance: number;
+  isActive: boolean;
+  transactions: Transaction[];
+}
+
+const transaction1: Transaction = {
+  payerAccountNumber: 133,
+  payeeAccountNumber: 131,
+};
+
+const transaction2: Transaction = {
+  payerAccountNumber: 1363,
+  payeeAccountNumber: 1831,
+};
+
+const bankAccount: BankAccount = {
+  accountNumber: 123,
+  accountHolder: "sumit kumar",
+  balance: 4000,
+  isActive: true,
+  transactions: [transaction1, transaction2],
+};
+
+//------------
+
+// Extend
+
+interface Book {
+  name: string;
+  price: number;
+}
+
+interface EBook extends Book {
+  // name: string;
+  // price: number;
+  fileSize: number;
+  format: string;
+}
+
+interface AudioBook extends EBook {
+  // name: string;
+  // price: number;
+  // fileSize: number;
+  // format: string;
+  duration: number;
+}
+
+const book: AudioBook = {
+  name: "Atomic",
+  price: 1000,
+  fileSize: 300,
+  format: "pdf",
+  duration: 5,
+};
