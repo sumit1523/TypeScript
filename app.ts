@@ -251,3 +251,50 @@ const getOldest1 = <T extends HasAge>(people: T[]): T => {
 };
 person.age;
 person.name;
+
+// ----------------------------------------------------------------
+
+interface IPost {
+  title: string;
+  id: number;
+  description: string;
+}
+interface IUser {
+  id: number;
+  name: string;
+  age: number;
+}
+const fetchPostData = async (path: string): Promise<IPost[]> => {
+  const response = await fetch(`http://exaample.com${path}`);
+  return response.json();
+};
+const fetchUserData = async (path: string): Promise<IUser[]> => {
+  const response = await fetch(`http://exaample.com${path}`);
+  return response.json();
+};
+
+(async () => {
+  const posts = await fetchPostData("/posts");
+  const users = await fetchUserData("/users");
+  posts[0].description;
+  posts[0].id;
+
+  users[0].age;
+  users[0].id;
+})();
+
+// Generic
+
+const fetchData = async <ResultType>(path: string): Promise<ResultType> => {
+  const response = await fetch(`http://exaample.com${path}`);
+  return response.json();
+};
+
+(async () => {
+  const users = await fetchData<IUser[]>("/users");
+  const posts = await fetchData<IPost[]>("/posts");
+
+  posts[0].description;
+  users[0].age;
+  users[0].id;
+})();
