@@ -178,3 +178,76 @@ const printId = (id: ID1) => {
   }
 };
 printId("1");
+
+//------------------------
+
+const getFirstThree = (x: string | number[]) => {
+  return x.slice(0, 3);
+};
+
+console.log(getFirstThree("hello")); // output => hel
+
+// =================
+
+// GENERICS
+
+const logString = (arg: string) => {
+  console.log(arg);
+  return arg;
+};
+const logNumber = (arg: number) => {
+  console.log(arg);
+  return arg;
+};
+const logArray = (arg: any[]) => {
+  console.log(arg);
+  return arg;
+};
+
+// common
+
+const logAnything = <T>(arg: T): T => {
+  console.log(arg);
+  return arg;
+};
+
+logString("logged In");
+logNumber(65);
+logArray([65, 66]);
+
+logAnything([2, 3, 4]);
+logAnything(["2", 3, 4]);
+
+interface HasAge {
+  age: number;
+}
+
+const getOldest = (people: HasAge[]): HasAge => {
+  return people.sort((a, b) => b.age - a.age)[0];
+};
+
+const people: HasAge[] = [{ age: 11 }, { age: 65 }, { age: 51 }];
+
+interface players {
+  name: string;
+  age: number;
+}
+const players: players[] = [
+  { name: " jhon1", age: 1 },
+  { name: " jhon2", age: 5 },
+  { name: " jhon3", age: 5 },
+];
+
+getOldest(people).age;
+
+// Assertion
+// getOldest(players).age;
+const person = getOldest(players) as players;
+
+// -------------
+
+const getOldest1 = <T extends HasAge>(people: T[]): T => {
+  return people.sort((a, b) => b.age - a.age)[0];
+};
+person.age;
+person.name;
