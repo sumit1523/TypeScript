@@ -298,3 +298,42 @@ const fetchData = async <ResultType>(path: string): Promise<ResultType> => {
   users[0].age;
   users[0].id;
 })();
+
+// -----------------
+
+// Strunctural typing or  duck typing
+interface ICredentials {
+  username: string;
+  password: string;
+  isAdmin?: boolean;
+}
+
+const login1 = (credentials: ICredentials): boolean => {
+  console.log(credentials);
+  return true;
+};
+
+const user1 = {
+  // const user1:ICredentials  = {
+  username: "user1",
+  password: "password",
+  isAdmin: true,
+};
+
+login1(user1);
+
+// -------------------
+
+interface IAuth {
+  username: string;
+  password: string;
+  login(username: string, password: string): boolean;
+}
+
+const auth: IAuth = {
+  username: "user1",
+  password: "password",
+  login(username: string, password: string) {
+    return true;
+  },
+};
