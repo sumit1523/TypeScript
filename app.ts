@@ -337,3 +337,9 @@ const auth: IAuth = {
     return true;
   },
 };
+
+// ------------------
+
+// inference
+
+let num = 1;
